@@ -7,7 +7,7 @@ package com.marvel.dominio;
  */
 
 /**
- *
+ * Comentario de prueba
  * @author davidandrade
  */
 public enum Genero {
