@@ -10,11 +10,6 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import org.apache.log4j.Logger;
 
-
-
-
-
-
 /**
  *
  * @author DYALOGOSAS.davidandrade
@@ -22,13 +17,12 @@ import org.apache.log4j.Logger;
 public class SecuenciasEscape {
 
     static Logger log = Logger.getLogger(SecuenciasEscape.class.getName());
-    
+
     public static void main(String[] args) {
 
         StringBuilder a = new StringBuilder("as");
         StringBuffer sb = new StringBuffer("ss");
-        
-        
+
         log.info("Iniciando programa");
 
         int cantidadIteraciones = 0;
@@ -37,6 +31,11 @@ public class SecuenciasEscape {
 
         try {
 
+            if (br.readLine().equals("")) {
+                System.out.println("Debe escribir algun numero");
+                System.exit(0);
+            }
+            
             cantidadIteraciones = Integer.parseInt(br.readLine());
         } catch (IOException ex) {
             log.error("Eror de IO", ex);
@@ -44,7 +43,7 @@ public class SecuenciasEscape {
             log.error("Eror de Conversion", ne);
             System.out.println("Usted no digitó un numero ");
             System.exit(0);
-        }catch(NullPointerException ex){
+        } catch (NullPointerException ex) {
             System.out.println("Usted no digitó ni mierda ");
             System.exit(0);
         }
