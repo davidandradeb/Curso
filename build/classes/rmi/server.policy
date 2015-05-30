@@ -1,0 +1,3 @@
+grant codeBase "file:/Volumes/Datos/Trabajo/Dyalogo/JDYALOGO/Netbeans/Curso/dist/Curso.jar" {
+    permission java.security.AllPermission;
+};
