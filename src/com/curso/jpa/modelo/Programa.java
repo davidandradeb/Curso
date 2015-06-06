@@ -34,8 +34,8 @@ public class Programa {
         
         
 
+       
         Usuarios usuarioNuevo = new Usuarios();
-
         usuarioNuevo.setEmail("pepito.perez@dyalogo.com");
         usuarioNuevo.setContrasena("nose");
 
@@ -48,6 +48,7 @@ public class Programa {
             System.out.println("No se logro insertar el usuario, esta repetido");
         }
 
+        
         System.out.println("Cual id de usuario quiere borrar");
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 

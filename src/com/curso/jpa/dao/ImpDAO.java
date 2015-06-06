@@ -14,7 +14,7 @@ import javax.persistence.EntityManager;
  * @author DYALOGOSAS.davidandrade
  * @param <tabla>
  */
-public class ImpDAO<tabla extends ImpTabla> implements IDAO<tabla> {
+public abstract class ImpDAO<tabla extends ImpTabla> implements IDAO<tabla> {
 
     private Class<tabla> objRepresentacionTabla_t;
 

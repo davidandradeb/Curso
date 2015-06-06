@@ -43,10 +43,13 @@ public class Mascotas extends ImpTabla implements Serializable {
     @Basic(optional = false)
     @Column(name = "id")
     private Integer id;
+    
     @Column(name = "tipo")
     private String tipo;
+    
     @Column(name = "nombre")
     private String nombre;
+    
     @Column(name = "edad")
     private Integer edad;
     
