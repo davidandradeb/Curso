@@ -6,7 +6,6 @@
 package com.curso.swing;
 
 import com.curso.jpa.modelo.DAOMascotas;
-import com.curso.jpa.tablas.Mascotas;
 import javafx.application.Application;
 import javafx.collections.FXCollections;
 import javafx.event.ActionEvent;
@@ -31,7 +30,7 @@ public class CursoFX extends Application {
     @Override
     public void start(Stage primaryStage) {
         
-        DAOMascotas daoMascotas = new DAOMascotas();
+        final DAOMascotas daoMascotas = new DAOMascotas();
         Button btn = new Button();
         btn.setText("Cargar tabla");
         btn.setOnAction(new EventHandler<ActionEvent>() {
