@@ -22,6 +22,7 @@ public interface IDAO<tabla extends ImpTabla> {
     List<tabla> lista();
     List<tabla> lista(String condicion);
     
+    tabla obtenerByCondicion(String condicion);
     /**
      * Elimina un registro de tipo tabla
      * @param registro 

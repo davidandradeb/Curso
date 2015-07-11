@@ -1,0 +1,24 @@
+/*
+ * Empty Stylesheet file.
+ */
+
+.mainFxmlClass {
+    -fx-color: black;
+}
+
+
+//Etiquetas
+//Clases
+//identitificadores
+
+Button{
+    width: 400px;
+}
+
+.button{
+    -fx-color:blue;
+}
+
+#button{
+    width: 400px;
+}

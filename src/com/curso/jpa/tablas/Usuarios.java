@@ -3,24 +3,21 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
+
 package com.curso.jpa.tablas;
 
 import com.curso.jpa.dao.ImpTabla;
 import java.io.Serializable;
-import java.util.List;
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
-import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.xml.bind.annotation.XmlRootElement;
-import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
@@ -30,26 +27,24 @@ import javax.xml.bind.annotation.XmlTransient;
 @Table(name = "usuarios")
 @XmlRootElement
 @NamedQueries({
-    @NamedQuery(name = "Usuarios.findAll", query = "SELECT t FROM Usuarios t"),
+    @NamedQuery(name = "Usuarios.findAll", query = "SELECT u FROM Usuarios u"),
     @NamedQuery(name = "Usuarios.findById", query = "SELECT u FROM Usuarios u WHERE u.id = :id"),
-    @NamedQuery(name = "Usuarios.findByEmail", query = "SELECT u FROM Usuarios u WHERE u.email = :email"),
-    @NamedQuery(name = "Usuarios.login", query = "SELECT u FROM Usuarios u WHERE u.email = :email and u.contrasena = :contrasena"),
-    @NamedQuery(name = "Usuarios.findByContrasena", query = "SELECT u FROM Usuarios u WHERE u.contrasena = :contrasena")})
+    @NamedQuery(name = "Usuarios.findByUsuario", query = "SELECT u FROM Usuarios u WHERE u.usuario = :usuario"),
+    @NamedQuery(name = "Usuarios.findByContrasena", query = "SELECT u FROM Usuarios u WHERE u.contrasena = :contrasena"),
+    @NamedQuery(name = "Usuarios.findByPerfil", query = "SELECT u FROM Usuarios u WHERE u.perfil = :perfil")})
 public class Usuarios extends ImpTabla implements Serializable {
-
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Basic(optional = false)
     @Column(name = "id")
     private Integer id;
-    @Column(name = "email")
-    private String email;
+    @Column(name = "usuario")
+    private String usuario;
     @Column(name = "contrasena")
     private String contrasena;
-
-    @OneToMany(mappedBy = "idUsuario", fetch = FetchType.LAZY)
-    private List<Mascotas> mascotasList;
+    @Column(name = "perfil")
+    private String perfil;
 
     public Usuarios() {
     }
@@ -58,22 +53,20 @@ public class Usuarios extends ImpTabla implements Serializable {
         this.id = id;
     }
 
-    @Override
     public Integer getId() {
         return id;
     }
 
-    @Override
     public void setId(Integer id) {
         this.id = id;
     }
 
-    public String getEmail() {
-        return email;
+    public String getUsuario() {
+        return usuario;
     }
 
-    public void setEmail(String email) {
-        this.email = email;
+    public void setUsuario(String usuario) {
+        this.usuario = usuario;
     }
 
     public String getContrasena() {
@@ -84,13 +77,12 @@ public class Usuarios extends ImpTabla implements Serializable {
         this.contrasena = contrasena;
     }
 
-    @XmlTransient
-    public List<Mascotas> getMascotasList() {
-        return mascotasList;
+    public String getPerfil() {
+        return perfil;
     }
 
-    public void setMascotasList(List<Mascotas> mascotasList) {
-        this.mascotasList = mascotasList;
+    public void setPerfil(String perfil) {
+        this.perfil = perfil;
     }
 
     @Override

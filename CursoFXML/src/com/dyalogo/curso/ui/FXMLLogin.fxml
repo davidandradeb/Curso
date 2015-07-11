@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.net.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.dyalogo.curso.ui.FXMLLoginController">
+    <stylesheets>
+        <URL value="@fxmllogin.css" />
+    </stylesheets>
+    <children>
+        
+        <Button fx:id="button" layoutX="45.0" layoutY="102.0" onAction="#handleButtonAction" prefHeight="26.0" prefWidth="260.0" text="Login" />
+        <Label fx:id="label" layoutX="126" layoutY="120" minHeight="16" minWidth="69" />
+        <Label layoutX="47.0" layoutY="39.0" text="Usuario" />
+        <Label layoutX="47.0" layoutY="73.0" text="Contraseña" />
+        <TextField fx:id="txtUsuario" layoutX="137.0" layoutY="34.0" />
+        <Label fx:id="lblMensajes" layoutX="37.0" layoutY="146.0" text="Mensajes" />
+      <PasswordField fx:id="txtContrasena" layoutX="137.0" layoutY="68.0" />
+      <Hyperlink fx:id="linkAbrirUsuarios" layoutX="37.0" layoutY="176.0" onAction="#abrirUsuarios" text="Abrir usuarios" />
+      <Hyperlink layoutX="37.0" layoutY="206.0" text="Ordenes" />
+      <Hyperlink layoutX="38.0" layoutY="235.0" text="Reportes" />
+    </children>
+</AnchorPane>

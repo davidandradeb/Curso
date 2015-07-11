@@ -21,7 +21,7 @@ public abstract class ImpDAO<tabla extends ImpTabla> implements IDAO<tabla> {
     public ImpDAO(Class<tabla> objRepresentacionTabla_t) {
         this.objRepresentacionTabla_t = objRepresentacionTabla_t;
     }
-    
+
     @Override
     public tabla obtenerByID(Integer id) {
         EntityManager em = Conexion.getConexionBD().createEntityManager();
@@ -32,7 +32,20 @@ public abstract class ImpDAO<tabla extends ImpTabla> implements IDAO<tabla> {
             em.close();
             em = null;
         }
-        
+
+    }
+
+    @Override
+    public tabla obtenerByCondicion(String strCondicion_t) {
+        EntityManager em = Conexion.getConexionBD().createEntityManager();
+
+        try {
+            return (tabla) em.createQuery("SELECT t FROM  " + nombreTabla() + " t WHERE " + strCondicion_t).getSingleResult();
+        } finally {
+            em.close();
+            em = null;
+        }
+
     }
 
     @Override
@@ -54,19 +67,18 @@ public abstract class ImpDAO<tabla extends ImpTabla> implements IDAO<tabla> {
         EntityManager em = Conexion.getConexionBD().createEntityManager();
         try {
             return em.createNamedQuery(nombreTabla() + ".findAll").getResultList();
-        }catch(Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
             return null;
-        }finally {
+        } finally {
             //(em.close();
             //em = null;
-            
+
         }
     }
-    
-    
-    private String nombreTabla(){
-        return objRepresentacionTabla_t.getName().substring(objRepresentacionTabla_t.getName().lastIndexOf(".")+1,objRepresentacionTabla_t.getName().length());
+
+    private String nombreTabla() {
+        return objRepresentacionTabla_t.getName().substring(objRepresentacionTabla_t.getName().lastIndexOf(".") + 1, objRepresentacionTabla_t.getName().length());
     }
 
     @Override
@@ -124,7 +136,7 @@ public abstract class ImpDAO<tabla extends ImpTabla> implements IDAO<tabla> {
         EntityManager em = Conexion.getConexionBD().createEntityManager();
 
         try {
-            
+
             em.getTransaction().begin();
             em.remove(em.getReference(objRepresentacionTabla_t, registro.getId()));
             em.getTransaction().commit();
@@ -138,7 +150,5 @@ public abstract class ImpDAO<tabla extends ImpTabla> implements IDAO<tabla> {
             em = null;
         }
     }
-
-    
 
 }
