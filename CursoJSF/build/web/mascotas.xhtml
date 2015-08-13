@@ -1,0 +1,81 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE composition PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+                template="./plantillaCRUD.xhtml"
+                xmlns:h="http://xmlns.jcp.org/jsf/html"
+                xmlns:f="http://xmlns.jcp.org/jsf/core"
+                xmlns:p="http://primefaces.org/ui">
+
+    <ui:define name="top">
+        Mascotas
+    </ui:define>
+
+    <ui:define name="left">
+
+        <h:commandLink value="Exportar">
+            <p:dataExporter type="xls" target="tblMascotas" fileName="mascotas" />
+        </h:commandLink>
+        
+        <p:dataTable id="tblMascotas" value="#{ctrlSesion.svrAdm_t.svrMascotas_t.lstMascotas}" var="mascota"
+                     selectionMode="single" selection="#{ctrlSesion.svrAdm_t.svrMascotas_t.objMascota_t}" rowKey="#{mascota.id}">
+
+            <p:ajax event="rowSelect"  update=":frm:contenidoFormulario" />
+
+            <p:column headerText="Nombre">
+                <h:outputText value="#{mascota.nombre}" />
+            </p:column>
+
+            <p:column exportable="false">
+                <h:panelGrid>
+                    <p:commandLink process="@this" action="#{ctrlSesion.svrAdm_t.svrMascotas_t.eliminar}" value="Eliminar" >
+                        <f:param value="#{mascota.id}" name="id_mascota"/>
+                    </p:commandLink>
+                </h:panelGrid>
+            </p:column>
+
+        </p:dataTable>
+    </ui:define>
+
+    <ui:define name="content">
+
+        <p:commandLink process="@this" action="#{ctrlSesion.svrAdm_t.svrMascotas_t.agregar}" value="Agregar" update="contenidoFormulario"/>
+        <p:commandLink action="#{ctrlSesion.svrAdm_t.svrMascotas_t.guardar}" value="Guardar" update="msj"/>
+
+        <h:panelGrid columns="2" id="contenidoFormulario">
+            <h:outputText value="Nombre"/>
+            <h:inputText value="#{ctrlSesion.svrAdm_t.svrMascotas_t.objMascota_t.nombre}" required="true" requiredMessage="Nombre obligatorio"/>
+
+            <h:outputText value="Edad"/>
+            <h:inputText value="#{ctrlSesion.svrAdm_t.svrMascotas_t.objMascota_t.edad}"/>
+
+            <h:outputText value="Tipo"/>
+            <h:selectOneMenu value="#{ctrlSesion.svrAdm_t.svrMascotas_t.objMascota_t.tipo}">
+                <f:selectItem itemValue="" itemLabel="Seleccione"/>
+                <f:selectItem itemValue="perro" itemLabel="Perro"/>
+                <f:selectItem itemValue="gato" itemLabel="Gato"/>
+                <f:selectItem itemValue="zorra" itemLabel="Zorra"/>
+                <f:selectItem itemValue="pato" itemLabel="Pato"/>
+                <f:selectItem itemValue="tigre" itemLabel="Tigre"/>
+                <f:selectItem itemValue="elefante" itemLabel="Elefante"/>
+            </h:selectOneMenu>
+
+
+            <h:outputText value="Color"/>
+            <h:inputText value="#{ctrlSesion.svrAdm_t.svrMascotas_t.objMascota_t.colo}"/>
+
+            <h:outputText value="Usuario"/>
+            <h:selectOneMenu value="#{ctrlSesion.svrAdm_t.svrMascotas_t.objMascota_t.idUsuario.id}">
+                <f:selectItem itemValue="" itemLabel="Seleccione"/>
+                <f:selectItems value="#{ctrlSesion.svrAdm_t.svrMascotas_t.lstusuarios}" var="usuario"
+                               itemLabel="#{usuario.usuario}" itemValue="#{usuario.id}"/>
+            </h:selectOneMenu>
+
+        </h:panelGrid>
+
+
+
+    </ui:define>
+
+
+
+</ui:composition>
