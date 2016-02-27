@@ -2,11 +2,6 @@
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
-        <group name="DyalogoCBX 3">
-            <file>file:/Volumes/Datos/Trabajo/Dyalogo/JDYALOGO/Netbeans/Curso/src/com/curso/jpa/tablas/Usuarios.java</file>
-            <file>file:/Volumes/Datos/Trabajo/Dyalogo/JDYALOGO/Netbeans/Curso/src/com/curso/jpa/modelo/DAOUsuarios.java</file>
-            <file>file:/Volumes/Datos/Trabajo/Dyalogo/JDYALOGO/Netbeans/Curso/src/com/curso/jpa/tablas/Mascotas.java</file>
-            <file>file:/Volumes/Datos/Trabajo/Dyalogo/JDYALOGO/Netbeans/Curso/src/com/curso/jpa/dao/ImpDAO.java</file>
-        </group>
+        <group name="DyalogoCBX 3"/>
     </open-files>
 </project-private>
